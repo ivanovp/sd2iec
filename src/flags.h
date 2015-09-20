@@ -28,7 +28,8 @@
 
 #ifdef __AVR__
 /* GPIOR0 is a bit-addressable register reserved for user data */
-#  define globalflags (GPIOR0)
+//#  define globalflags (GPIOR0)
+extern uint8_t globalflags;
 #else
 /* Global flags, variable defined in doscmd.c */
 extern uint8_t globalflags;

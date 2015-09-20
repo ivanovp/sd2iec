@@ -59,35 +59,35 @@ typedef uint8_t rawbutton_t;
 #  define HAVE_SD
 
 /* Declaration of the interrupt handler for SD card change */
-#  define SD_CHANGE_HANDLER ISR(INT0_vect)
+//#  define SD_CHANGE_HANDLER ISR(INT0_vect)
 
 /* Declaration of the interrupt handler for SD card 2 change */
-#  define SD2_CHANGE_HANDLER ISR(INT9_vect)
+//#  define SD2_CHANGE_HANDLER ISR(INT9_vect)
 
 /* Initialize all pins and interrupts related to SD - except SPI */
 static inline void sdcard_interface_init(void) {
   /* card detect (SD1) */
-  DDRD  &= ~_BV(PD2);
-  PORTD |=  _BV(PD2);
-  /* write protect (SD1) */
-  DDRD &= ~_BV(PD6);
-  PORTD |= _BV(PD6);
-  /* card change interrupt (SD1) */
-  EICRA |= _BV(ISC00);
-  EIMSK |= _BV(INT0);
-  // Note: Wrapping SD2 in CONFIG_TWINSD may be a good idea
-  /* chip select (SD2) */
-  PORTD |= _BV(PD4);
-  DDRD |= _BV(PD4);
-  /* card detect (SD2) */
-  DDRD &= ~_BV(PD3);
-  PORTD |= _BV(PD3);
-  /* write protect (SD2) */
-  DDRD &= ~_BV(PD7);
-  PORTD |= _BV(PD7);
-  /* card change interrupt (SD2) */
-  EICRA |=  _BV(ISC90); // Change interrupt
-  EIMSK |=  _BV(INT9);  // Change interrupt
+//  DDRD  &= ~_BV(PD2);
+//  PORTD |=  _BV(PD2);
+//  /* write protect (SD1) */
+//  DDRD &= ~_BV(PD6);
+//  PORTD |= _BV(PD6);
+//  /* card change interrupt (SD1) */
+//  EICRA |= _BV(ISC00);
+//  EIMSK |= _BV(INT0);
+//  // Note: Wrapping SD2 in CONFIG_TWINSD may be a good idea
+//  /* chip select (SD2) */
+//  PORTD |= _BV(PD4);
+//  DDRD |= _BV(PD4);
+//  /* card detect (SD2) */
+//  DDRD &= ~_BV(PD3);
+//  PORTD |= _BV(PD3);
+//  /* write protect (SD2) */
+//  DDRD &= ~_BV(PD7);
+//  PORTD |= _BV(PD7);
+//  /* card change interrupt (SD2) */
+//  EICRA |=  _BV(ISC90); // Change interrupt
+//  EIMSK |=  _BV(INT9);  // Change interrupt
 }
 
 /* sdcard_detect() must return non-zero while a card is inserted */
@@ -132,9 +132,9 @@ static inline __attribute__((always_inline)) void sdcard2_set_ss(uint8_t state) 
 /* #  define SD_SUPPLY_VOLTAGE (1L<<15)  / * 2.7V - 2.8V */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<16)  / * 2.8V - 2.9V */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<17)  / * 2.9V - 3.0V */
-#  define SD_SUPPLY_VOLTAGE (1L<<18)  /* 3.0V - 3.1V */
+//#  define SD_SUPPLY_VOLTAGE (1L<<18)  /* 3.0V - 3.1V */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<19)  / * 3.1V - 3.2V */
-/* #  define SD_SUPPLY_VOLTAGE (1L<<20)  / * 3.2V - 3.3V */
+#  define SD_SUPPLY_VOLTAGE (1L<<20)  / * 3.2V - 3.3V */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<21)  / * 3.3V - 3.4V */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<22)  / * 3.4V - 3.5V */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<23)  / * 3.5V - 3.6V */
@@ -166,43 +166,43 @@ static inline void leds_init(void) {
   /* Note: Depending on the chip and register these lines can compile */
   /*       to one instruction each on AVR. For two bits this is one   */
   /*       instruction shorter than "DDRC |= _BV(PC0) | _BV(PC1);"    */
-  DDRC |= _BV(PC0);
-  DDRC |= _BV(PC1);
+  DDRC |= _BV(PA0);
+  DDRC |= _BV(PA1);
 }
 
 /* --- "BUSY" led, recommended color: green (usage similiar to 1541 LED) --- */
 static inline __attribute__((always_inline)) void set_busy_led(uint8_t state) {
   if (state)
-    PORTC |= _BV(PC0);
+    PORTC |= _BV(PA1);
   else
-    PORTC &= ~_BV(PC0);
+    PORTC &= ~_BV(PA1);
 }
 
 /* --- "DIRTY" led, recommended color: red (errors, unwritten data in memory) --- */
 static inline __attribute__((always_inline)) void set_dirty_led(uint8_t state) {
   if (state)
-    PORTC |= _BV(PC1);
+    PORTC |= _BV(PA0);
   else
-    PORTC &= ~_BV(PC1);
+    PORTC &= ~_BV(PA0);
 }
 
 /* Toggle function used for error blinking */
 static inline void toggle_dirty_led(void) {
   /* Sufficiently new AVR cores have a toggle function */
-  PINC |= _BV(PC1);
+  PINC |= _BV(PA0);
 }
 
 
 /*** IEC signals ***/
-#  define IEC_INPUT PINA
-#  define IEC_DDR   DDRA
-#  define IEC_PORT  PORTA
+#  define IEC_INPUT PINE
+#  define IEC_DDR   DDRE
+#  define IEC_PORT  PORTE
 
 /* Pins assigned for the IEC lines */
-#  define IEC_PIN_ATN   PA0
-#  define IEC_PIN_DATA  PA1
-#  define IEC_PIN_CLOCK PA2
-#  define IEC_PIN_SRQ   PA3
+#  define IEC_PIN_ATN   PE5
+#  define IEC_PIN_DATA  PE2
+#  define IEC_PIN_CLOCK PE4
+#  define IEC_PIN_SRQ   PE3
 
 /* Use separate input/output lines?                                    */
 /* The code assumes that the input is NOT inverted, but the output is. */
@@ -220,10 +220,14 @@ static inline void toggle_dirty_led(void) {
 //#  define IEC_PORTIN     PORTX
 
 /* ATN interrupt (required) */
-#  define IEC_ATN_INT_VECT    PCINT0_vect
-static inline void iec_interrupts_init(void) {
-  PCMSK0 = _BV(PCINT0);
-  PCIFR |= _BV(PCIF0);
+#  define IEC_ATN_INT         INT5
+#  define IEC_ATN_INT_VECT    INT5_vect
+#  define IEC_CLK_INT         INT4
+#  define IEC_CLK_INT_VECT    INT4_vect
+static inline void iec_interrupts_init(void)
+{
+    EIMSK |= _BV(INT5) | _BV(INT4);
+    EICRB |= _BV(ISC51) | _BV(ISC41); /* Falling edge */
 }
 
 /* CLK interrupt (not required) */

@@ -43,7 +43,7 @@ void get_mcusr(void) \
       __attribute__((section(".init3")));
 void get_mcusr(void)
 {
-  MCUSR = 0;
+//  MCUSR = 0;
   wdt_disable();
 }
 

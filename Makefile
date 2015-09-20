@@ -1,7 +1,7 @@
 # Hey Emacs, this is a -*- makefile -*-
 
 ifndef CONFIG
-  CONFIG = config
+  CONFIG = configs/config-ip
 endif
 
 CONFDATA     := $(shell scripts/configparser.pl --confdata $(CONFIG))
