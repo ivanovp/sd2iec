@@ -206,11 +206,11 @@ static inline void toggle_dirty_led(void) {
 
 /* Use separate input/output lines?                                    */
 /* The code assumes that the input is NOT inverted, but the output is. */
-//#  define IEC_SEPARATE_OUT
-//#  define IEC_OPIN_ATN   PA4
-//#  define IEC_OPIN_DATA  PA5
-//#  define IEC_OPIN_CLOCK PA6
-//#  define IEC_OPIN_SRQ   PA7
+#  define IEC_SEPARATE_OUT
+#  define IEC_OPIN_ATN   PE0
+#  define IEC_OPIN_DATA  PE1
+#  define IEC_OPIN_CLOCK PE6
+#  define IEC_OPIN_SRQ   PE7
 
 /* You can use different ports for input and output bits. The code tries */
 /* to not stomp on the unused bits. IEC output is on IEC_PORT.           */
@@ -273,12 +273,12 @@ static inline void buttons_init(void) {
 
 /*** board-specific initialisation ***/
 /* Currently used on uIEC/CF and uIEC/SD only */
-//#define HAVE_BOARD_INIT
-//static inline void board_init(void) {
-//  // turn on power LED
-//  DDRG  |= _BV(PG1);
-//  PORTG |= _BV(PG1);
-//}
+#define HAVE_BOARD_INIT
+static inline void board_init(void) {
+  // turn on power LED
+  DDRA  |= _BV(PA1);
+  PORTA |= _BV(PA1);
+}
 
 
 /* Pre-configurated hardware variants */

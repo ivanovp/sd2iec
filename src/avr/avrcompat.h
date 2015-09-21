@@ -98,13 +98,13 @@
 #  define OCR2A  OCR2
 
 #elif defined __AVR_ATmega128__
-#  define UBRRH  UBRR0H
-#  define UBRRL  UBRR0L
-#  define UCSRA  UCSR0A
-#  define UCSRB  UCSR0B
-#  define UCSRC  UCSR0C
-#  define UDR    UDR0
-#  define USART_UDRE_vect USART0_UDRE_vect
+#  define UBRRH  UBRR1H
+#  define UBRRL  UBRR1L
+#  define UCSRA  UCSR1A
+#  define UCSRB  UCSR1B
+#  define UCSRC  UCSR1C
+#  define UDR    UDR1
+#  define USART_UDRE_vect USART1_UDRE_vect
 #  define TIMER2_COMPA_vect TIMER2_COMP_vect
 #  define TCCR0B TCCR0
 #  define TCCR2A TCCR2

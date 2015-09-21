@@ -2,5 +2,5 @@ INCLUDEPATH += /usr/avr/include/
 INCLUDEPATH += ./src
 INCLUDEPATH += ./src/avr
 INCLUDEPATH += ./lcd-i2c
-DEFINES += __AVR_ATmega128A__=1
+DEFINES += __AVR_ATmega128A__=1 __AVR_ATmega128__=1
 DEFINES += CONFIG_HARDWARE_VARIANT=1
