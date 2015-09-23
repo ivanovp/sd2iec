@@ -347,6 +347,8 @@ DSTATUS sd_initialize(BYTE drv) {
   uint8_t  i,res;
   tick_t   timeout;
 
+  uart_puts_P(PSTR("^init\r\n"));
+
   if (drv >= MAX_CARDS)
     return STA_NOINIT | STA_NODISK;
 
@@ -390,6 +392,8 @@ DSTATUS sd_initialize(BYTE drv) {
   }
 #endif
 
+  uart_puts_P(PSTR("^start\r\n"));
+
   /* switch card to idle state */
   res = send_command(drv, GO_IDLE_STATE, 0);
   deselect_card();
@@ -403,6 +407,8 @@ DSTATUS sd_initialize(BYTE drv) {
     else
       return STA_NOINIT;
   }
+
+  uart_puts_P(PSTR("^0\r\n"));
 
   /* send interface conditions (required for SDHC) */
   res = send_command(drv, SEND_IF_COND, 0b000110101010);
@@ -423,6 +429,8 @@ DSTATUS sd_initialize(BYTE drv) {
 
   deselect_card();
 
+  uart_puts_P(PSTR("^1\r\n"));
+
   /* tell SD/SDHC cards to initialize */
   timeout = getticks() + HZ/2;
   do {
@@ -442,6 +450,8 @@ DSTATUS sd_initialize(BYTE drv) {
   if (res != 0)
     goto not_sd;
 
+  uart_puts_P(PSTR("^2\r\n"));
+
   /* send READ_OCR to detect SDHC cards */
   res = send_command(drv, READ_OCR, 0);
 
@@ -456,6 +466,8 @@ DSTATUS sd_initialize(BYTE drv) {
 
   deselect_card();
 
+  uart_puts_P(PSTR("^3\r\n"));
+
  not_sd:
   /* tell MMC cards to initialize (SD ignores this) */
   timeout = getticks() + HZ/2;
@@ -467,11 +479,15 @@ DSTATUS sd_initialize(BYTE drv) {
   if (res != 0)
     return STA_NOINIT;
 
+  uart_puts_P(PSTR("^4\r\n"));
+
   /* enable CRC checks */
   res = send_command(drv, CRC_ON_OFF, 1);
   deselect_card();
   if (res > 1)
     return STA_NOINIT | STA_NODISK;
+
+  uart_puts_P(PSTR("^5\r\n"));
 
   /* set block size to 512 */
   res = send_command(drv, SET_BLOCKLEN, 512);

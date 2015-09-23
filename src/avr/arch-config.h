@@ -67,12 +67,12 @@ typedef uint8_t rawbutton_t;
 /* Initialize all pins and interrupts related to SD - except SPI */
 static inline void sdcard_interface_init(void) {
   /* card detect (SD1) */
-//  DDRD  &= ~_BV(PD2);
-//  PORTD |=  _BV(PD2);
-//  /* write protect (SD1) */
-//  DDRD &= ~_BV(PD6);
-//  PORTD |= _BV(PD6);
-//  /* card change interrupt (SD1) */
+  DDRF  &= ~_BV(PF1);
+  PORTF |=  _BV(PF1);
+  /* write protect (SD1) */
+  DDRF &= ~_BV(PF0);
+  PORTF |= _BV(PF0);
+  /* card change interrupt (SD1) */
 //  EICRA |= _BV(ISC00);
 //  EIMSK |= _BV(INT0);
 //  // Note: Wrapping SD2 in CONFIG_TWINSD may be a good idea
@@ -93,48 +93,51 @@ static inline void sdcard_interface_init(void) {
 /* sdcard_detect() must return non-zero while a card is inserted */
 /* This must be a pin capable of generating interrupts.          */
 static inline uint8_t sdcard_detect(void) {
-  return !(PIND & _BV(PD2));
+  return 1; //!(PIND & _BV(PD2));
 }
 
 /* Returns non-zero when the currently inserted card is write-protected */
 static inline uint8_t sdcard_wp(void) {
-  return PIND & _BV(PD6);
+  return 0; //PIND & _BV(PD6);
 }
 
 /* Support for a second SD card - use CONFIG_TWINSD=y in your config file to enable! */
 /* Same as the two functions above, but for card 2 */
 static inline uint8_t sdcard2_detect(void) {
-  return !(PIND & _BV(PD3));
+    return 0;
+//  return !(PIND & _BV(PD3));
 }
 static inline uint8_t sdcard2_wp(void) {
-  return PIND & _BV(PD7);
+    return 1;
+//  return PIND & _BV(PD7);
 }
 
 /* SD card 1 is assumed to use the standard SS pin   */
 /* If that's not true, #define SDCARD_SS_SPECIAL and */
 /* implement this function:                          */
-//static inline __attribute__((always_inline)) void sdcard_set_ss(uint8_t state) {
-//  if (state)
-//    PORTZ |= _BV(PZ9);
-//  else
-//    PORTZ &= ~_BV(PZ9);
-//}
+#define SDCARD_SS_SPECIAL
+static inline __attribute__((always_inline)) void sdcard_set_ss(uint8_t state) {
+  if (state)
+    PORTB |= _BV(PB0);
+  else
+    PORTB &= ~_BV(PB0);
+}
 
 /* SD card 2 CS pin */
 static inline __attribute__((always_inline)) void sdcard2_set_ss(uint8_t state) {
-  if (state)
-    PORTD |= _BV(PD4);
-  else
-    PORTD &= ~_BV(PD4);
+//  if (state)
+//    PORTB |= _BV(PB0);
+//  else
+//    PORTB &= ~_BV(PB0);
 }
 
 /* SD Card supply voltage - choose the one appropiate to your board */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<15)  / * 2.7V - 2.8V */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<16)  / * 2.8V - 2.9V */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<17)  / * 2.9V - 3.0V */
-//#  define SD_SUPPLY_VOLTAGE (1L<<18)  /* 3.0V - 3.1V */
+#  define SD_SUPPLY_VOLTAGE (1L<<18)  /* 3.0V - 3.1V */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<19)  / * 3.1V - 3.2V */
-#  define SD_SUPPLY_VOLTAGE (1L<<20)  / * 3.2V - 3.3V */
+//#  define SD_SUPPLY_VOLTAGE (1L<<20)  /* 3.2V - 3.3V */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<21)  / * 3.3V - 3.4V */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<22)  / * 3.4V - 3.5V */
 /* #  define SD_SUPPLY_VOLTAGE (1L<<23)  / * 3.5V - 3.6V */
@@ -148,13 +151,14 @@ static inline __attribute__((always_inline)) void sdcard2_set_ss(uint8_t state) 
 /*** Device address selection ***/
 /* device_hw_address() returns the hardware-selected device address */
 static inline uint8_t device_hw_address(void) {
-  return 8 + !(PIND & _BV(PD7)) + 2*!(PIND & _BV(PD5));
+//  return 8 + !(PIND & _BV(PD7)) + 2*!(PIND & _BV(PD5));
+  return 8;
 }
 
 /* Configure hardware device address pins */
 static inline void device_hw_address_init(void) {
-  DDRD  &= ~(_BV(PD7) | _BV(PD5));
-  PORTD |=   _BV(PD7) | _BV(PD5);
+//  DDRD  &= ~(_BV(PD7) | _BV(PD5));
+//  PORTD |=   _BV(PD7) | _BV(PD5);
 }
 
 
@@ -166,30 +170,30 @@ static inline void leds_init(void) {
   /* Note: Depending on the chip and register these lines can compile */
   /*       to one instruction each on AVR. For two bits this is one   */
   /*       instruction shorter than "DDRC |= _BV(PC0) | _BV(PC1);"    */
-  DDRC |= _BV(PA0);
-  DDRC |= _BV(PA1);
+  DDRA |= _BV(PA0);
+  DDRA |= _BV(PA1);
 }
 
 /* --- "BUSY" led, recommended color: green (usage similiar to 1541 LED) --- */
 static inline __attribute__((always_inline)) void set_busy_led(uint8_t state) {
   if (state)
-    PORTC |= _BV(PA1);
+    PORTA |= _BV(PA1);
   else
-    PORTC &= ~_BV(PA1);
+    PORTA &= ~_BV(PA1);
 }
 
 /* --- "DIRTY" led, recommended color: red (errors, unwritten data in memory) --- */
 static inline __attribute__((always_inline)) void set_dirty_led(uint8_t state) {
   if (state)
-    PORTC |= _BV(PA0);
+    PORTA |= _BV(PA0);
   else
-    PORTC &= ~_BV(PA0);
+    PORTA &= ~_BV(PA0);
 }
 
 /* Toggle function used for error blinking */
 static inline void toggle_dirty_led(void) {
   /* Sufficiently new AVR cores have a toggle function */
-  PINC |= _BV(PA0);
+  PORTA ^= _BV(PA0);
 }
 
 
@@ -207,10 +211,10 @@ static inline void toggle_dirty_led(void) {
 /* Use separate input/output lines?                                    */
 /* The code assumes that the input is NOT inverted, but the output is. */
 #  define IEC_SEPARATE_OUT
-#  define IEC_OPIN_ATN   PE0
-#  define IEC_OPIN_DATA  PE1
-#  define IEC_OPIN_CLOCK PE6
-#  define IEC_OPIN_SRQ   PE7
+#  define IEC_OPIN_ATN   PE7
+#  define IEC_OPIN_DATA  PE0
+#  define IEC_OPIN_CLOCK PE1
+#  define IEC_OPIN_SRQ   PE6
 
 /* You can use different ports for input and output bits. The code tries */
 /* to not stomp on the unused bits. IEC output is on IEC_PORT.           */
@@ -275,9 +279,11 @@ static inline void buttons_init(void) {
 /* Currently used on uIEC/CF and uIEC/SD only */
 #define HAVE_BOARD_INIT
 static inline void board_init(void) {
+    // SS (/CS) output
+    DDRB |= _BV(PB0);
   // turn on power LED
-  DDRA  |= _BV(PA1);
-  PORTA |= _BV(PA1);
+//  DDRA  |= _BV(PA1);
+//  PORTA |= _BV(PA1);
 }
 
 
