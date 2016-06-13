@@ -149,7 +149,7 @@ void load_turbodisk(UNUSED_PARAMETER) {
       }
 
       if (firstsector) {
-        /* Load address is transferred seperately */
+        /* Load address is transferred separately */
         i = buf->position;
         turbodisk_byte(buf->data[i++]);
         turbodisk_byte(buf->data[i++]);

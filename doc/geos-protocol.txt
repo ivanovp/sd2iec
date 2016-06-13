@@ -328,7 +328,7 @@ U0> command instead.
 
 Stage 1 sector chain transfer
 -----------------------------
-The chain transfer in stage 1 works similiarly to a file transfer from
+The chain transfer in stage 1 works similarly to a file transfer from
 a D64 in standard mode - a track/sector number is passed to the transfer
 subroutine which will read that sector, transfer its data and switch
 to the next track/sector specified in the first two bytes of the

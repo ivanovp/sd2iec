@@ -1755,7 +1755,7 @@ static void d64_mkdir(path_t *path, uint8_t *dirname) {
     return;
 
   /* Create the directory entry */
-  /* FIXME: Isn't similiar code duplicated in open_write and rename? */
+  /* FIXME: Isn't similar code duplicated in open_write and rename? */
   memset(ops_scratch + 2, 0, sizeof(ops_scratch) - 2);
   memset(ops_scratch + DIR_OFS_FILE_NAME, 0xa0, CBM_NAME_LENGTH);
 

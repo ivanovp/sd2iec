@@ -150,7 +150,7 @@ buffer_t *alloc_system_buffer(void);
 buffer_t *alloc_buffer(void);
 
 /* Allocates linked buffers - returns pointer to first buffer or NULL if failure */
-/* Buffers are guranteed to have continuous data segments. */
+/* Buffers are guaranteed to have continuous data segments. */
 buffer_t *alloc_linked_buffers(uint8_t count);
 
 /* Call the cleanup function and deallocate a buffer */

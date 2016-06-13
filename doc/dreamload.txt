@@ -69,7 +69,7 @@ bit pair is acknowledged by the host by pulling ATN down. Directly after this
 ack the drive must put the next two bytes on CLOCK and DATA, the will be ack'd
 with a high level on ATN. The rest of the byte follow in the same manner.
 
-If there there are no additional bytes to be transfered, the drive releases
+If there there are no additional bytes to be transferred, the drive releases
 DATA and CLOCK to high.
 
 BLOCK TO HOST PROTOCOL
@@ -83,7 +83,7 @@ Is the value is not 0, it is an error indication. No additional bytes follow in
 this case. The C64 code returns an error flag to the application in this case.
 
 After a block a checksum follows. All bytes of the block are EORed beginning
-with 0, the result is transfered as checksum.
+with 0, the result is transferred as checksum.
 
 DREAMLOAD VARIANTS
 ==================

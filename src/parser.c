@@ -200,7 +200,7 @@ uint8_t match_name(uint8_t *matchstr, cbmdirent_t *dent, uint8_t ignorecase) {
  *
  * This function looks for the next directory entry matching matchstr and
  * type (if != 0) and returns it in dent. Return values of the function are
- * -1 if no match could be found, 1 if an error occured or 0 if a match was
+ * -1 if no match could be found, 1 if an error occurred or 0 if a match was
  * found.
  */
 int8_t next_match(dh_t *dh, uint8_t *matchstr, date_t *start, date_t *end, uint8_t type, cbmdirent_t *dent) {
@@ -282,7 +282,7 @@ int8_t first_match(path_t *path, uint8_t *matchstr, uint8_t type, cbmdirent_t *d
  * This function parses a CMD style directory specification in the input
  * buffer. If successful, the path object will be set up for accessing
  * the path named in the input buffer. Returns 0 if successful or 1 if an
- * error occured.
+ * error occurred.
  * If @for_cd is true, no colon is required in the input string and parsing
  * is ended successfully if the last component in the path is an image file.
  */

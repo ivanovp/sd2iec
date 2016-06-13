@@ -83,7 +83,7 @@ Supported commands:
   image the image file must be the last component in the path, either
   after a slash or a colon character.
 
-  MD uses a syntax similiar to CD and will create the directory listed
+  MD uses a syntax similar to CD and will create the directory listed
   after the colon (:) relative to any directory listed before it.
 
     MD/foo/:bar  creates bar in foo
@@ -121,7 +121,7 @@ Supported commands:
   result in an error message.
 
   D has three subcommands: DI (Info), DR (Read) and DW (Write).
-  Each of those commands requires a buffer to be opened (similiar
+  Each of those commands requires a buffer to be opened (similar
   to U1/U2), but due to the larger sector size of the storage devices
   used by sd2iec it needs to be a large buffer of size 2 (512 bytes)
   or larger. The exception is the DI command with page set to 0,
@@ -369,7 +369,7 @@ Supported commands:
              drive configuration status information.
 
   - X        X without any following characters reports the current state
-             of all extended parameters via the error channel, similiar
+             of all extended parameters via the error channel, similar
              to DolphinDOS. Example result: "03,J-:C152:E01+:B+:*+,08,00"
              The track indicates the current device address.
 
@@ -518,7 +518,7 @@ one directory entry.
 
 Partitions:
 ===========
-sd2iec features a multi-partition support similiar to that of the CMD
+sd2iec features a multi-partition support similar to that of the CMD
 drives. The partitions (which may be on separate drives for some hardware
 configurations) are accessed using the drive number of the commands
 sent from the computer and are numbered starting with 1. Partition 0
@@ -543,7 +543,7 @@ for partitions 1 to 9.
 
 Software fastloaders:
 =====================
-Note: Using sd2iec without an external crystal or similiar precise
+Note: Using sd2iec without an external crystal or similar precise
       clock source is not a supported configuration.
       If you try that anyway, be prepared to suffer from random
       data corruption. You have been warned.
@@ -567,7 +567,7 @@ Note: Using sd2iec without an external crystal or similiar precise
 
   EXOS V3 and The Beast System
   ----------------------------
-  Both supported, the loader used by these kernals is very similiar to
+  Both supported, the loader used by these kernals is very similar to
   the FC3 fast loader.
 
   Action Replay 6
@@ -585,7 +585,7 @@ Note: Using sd2iec without an external crystal or similiar precise
   Dreamload
   ---------
   Dreamload uses direct track/sector access, so it is only supported
-  on D64 or similiar disk image formats. As sd2iec has to wait for commands
+  on D64 or similar disk image formats. As sd2iec has to wait for commands
   from the C64 constantly the disk change buttons may become unresponsive,
   try multiple times if you need to. Dreamload is a "captive" fastloader,
   sd2iec stay in Dreamload mode until it receives a "quit loader" command
@@ -598,7 +598,7 @@ Note: Using sd2iec without an external crystal or similiar precise
   ULoad Model 3
   -------------
   ULoad Model 3 uses direct track/sector access, so it is only supported
-  on D64 or similiar disk image formats. Currently there is exactly one
+  on D64 or similar disk image formats. Currently there is exactly one
   supported variant of ULoad Model 3, which is the one used by
   Ultima 3 Gold. There are no other known variants at this time, but
   this may change.
@@ -611,7 +611,7 @@ Note: Using sd2iec without an external crystal or similiar precise
   G.I. Joe Loader
   ---------------
   Said to be the most-ripped IRQ loader. Unfortunately this is a
-  "captive" fastloader similiar to dreamload (but not restricted
+  "captive" fastloader similar to dreamload (but not restricted
   to disk images because it is file name-based) and there is no
   reliable way to detect if the computer has been reset to switch
   back to the standard protocol. To exit this loader, hold down

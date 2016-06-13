@@ -1178,7 +1178,7 @@ static void handle_memread(void) {
     if (res != FR_OK || bytesread != bytes)
       goto use_internal;
 
-    /* Note: f_close isn't neccessary in FatFs for read-only files */
+    /* Note: f_close isn't necessary in FatFs for read-only files */
 
   } else {
   use_internal:

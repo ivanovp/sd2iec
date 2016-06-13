@@ -511,7 +511,7 @@ DSTATUS disk_initialize(BYTE drv) __attribute__ ((weak, alias("sd_initialize")))
  * @count : number of sectors to be read
  *
  * This function reads count sectors from the SD card starting
- * at sector to buffer. Returns RES_ERROR if an error occured or
+ * at sector to buffer. Returns RES_ERROR if an error occurred or
  * RES_OK if successful. Up to SD_AUTO_RETRIES will be made if
  * the calculated data CRC does not match the one sent by the
  * card. If there were errors during the command transmission
@@ -616,7 +616,7 @@ DRESULT disk_read(BYTE drv, BYTE *buffer, DWORD sector, BYTE count) __attribute_
  * @count : number of sectors to be written
  *
  * This function writes count sectors from buffer to the SD card
- * starting at sector. Returns RES_ERROR if an error occured,
+ * starting at sector. Returns RES_ERROR if an error occurred,
  * RES_WPRT if the card is currently write-protected or RES_OK
  * if successful. Up to SD_AUTO_RETRIES will be made if the card
  * signals a CRC error. If there were errors during the command

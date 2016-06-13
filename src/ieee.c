@@ -311,7 +311,7 @@ IEEE_ATN_HANDLER {
  *
  * This function tries receives one byte from the IEEE-488 bus and returns it
  * if successful. Flags (EOI, ATN) are passed in the more significant byte.
- * Returns TIMEOUT_ABORT if a timeout occured
+ * Returns TIMEOUT_ABORT if a timeout occurred
  */
 
 int ieee_getc(void) {
@@ -356,7 +356,7 @@ int ieee_getc(void) {
  * Returns
  *  0 normally,
  * ATN_POLLED if ATN was set or
- * TIMEOUT_ABORT if a timeout occured
+ * TIMEOUT_ABORT if a timeout occurred
  * On negative returns, the caller should return to the IEEE main loop.
  */
 

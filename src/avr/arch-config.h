@@ -174,7 +174,7 @@ static inline void leds_init(void) {
   DDRA |= _BV(PA1);
 }
 
-/* --- "BUSY" led, recommended color: green (usage similiar to 1541 LED) --- */
+/* --- "BUSY" led, recommended color: green (usage similar to 1541 LED) --- */
 static inline __attribute__((always_inline)) void set_busy_led(uint8_t state) {
   if (state)
     PORTA |= _BV(PA1);
