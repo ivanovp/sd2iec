@@ -395,7 +395,7 @@ ISR(TWI_vect) {
  * update_display - update display contents based on lcdline array
  *
  * This function reads the contents of the lcdline array and
- * updates and/or scrolls lines as neccessary.
+ * updates and/or scrolls lines as necessary.
  */
 static void update_display(void) {
   static uint8_t scrolling;

@@ -39,7 +39,7 @@ Main loop
 8) If not successful, send error and restart main loop
 9) Send file contents
 10) Send 0xac 0xff
-11) (Close file if neccessary)
+11) (Close file if necessary)
 12) Restart main loop
 
 Sending file contents
@@ -60,7 +60,7 @@ Sending error
 -------------
 1) Set CLK high
 2) Send 0xfe 0xfe 0xac 0xf7
-3) (Close file if neccessary)
+3) (Close file if necessary)
 
 Low Level
 =========

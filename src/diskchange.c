@@ -163,13 +163,13 @@ static uint8_t mount_line(void) {
   display_current_part(current_part);
   partition[current_part].current_dir = swappath.dir;
 
-  /* add a colon if neccessary */
+  /* add a colon if necessary */
   if (!got_colon && buffer_start[0] != '/') {
     command_buffer[0] = ':';
     buffer_start = command_buffer;
   }
 
-  /* recode entry if neccessary */
+  /* recode entry if necessary */
   if (globalflags & SWAPLIST_ASCII)
     asc2pet(buffer_start);
 

@@ -36,7 +36,7 @@ extern const PROGMEM uint8_t filetypes[];
 /* saved dirent of the last opened file */
 extern cbmdirent_t previous_file_dirent;
 
-/* Refill-callback for large buffers, only used for comparision */
+/* Refill-callback for large buffers, only used for comparison */
 uint8_t directbuffer_refill(buffer_t *buf);
 
 /* reopen the last opened file on secondary 0 */

@@ -46,7 +46,7 @@ typedef unsigned int rawbutton_t;
 #define SSP_CLK_DIVISOR_FAST 6
 #define SSP_CLK_DIVISOR_SLOW 250
 
-/* IEC in/out are always seperate */
+/* IEC in/out are always separate */
 #define IEC_SEPARATE_OUT
 
 /* The GPIO interrupt is demuxed in system.c, function names are fixed */

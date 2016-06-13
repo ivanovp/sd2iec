@@ -338,7 +338,7 @@ void eepromfs_format(void) {
 
     eeprom_read_block(&val, addr, sizeof(val));
     if (val != 0xffffffffUL) {
-      /* clear only if neccessary to reduce number of writes */
+      /* clear only if necessary to reduce number of writes */
       val = 0xffffffffUL;
       eeprom_write_block(&val, addr, sizeof(val));
     }

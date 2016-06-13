@@ -250,7 +250,7 @@ void set_error_ts(uint8_t errornum, uint8_t track, uint8_t sector) {
 
   if (errornum >= 20 && errornum != ERROR_DOSVERSION) {
     // FIXME: Compare to E648
-    // NOTE: 1571 doesn't write the BAM and closes some buffers if an error occured
+    // NOTE: 1571 doesn't write the BAM and closes some buffers if an error occurred
     led_state |= LED_ERROR;
   } else {
     led_state &= (uint8_t)~LED_ERROR;

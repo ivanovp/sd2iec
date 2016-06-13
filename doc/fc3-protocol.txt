@@ -46,7 +46,7 @@ the C64 side.
 1..3: not used
 
 Each tuple is syncronized by the drive pulling CLOCK low, then 2 bits are
-transfered at once until the 4 bytes are done. Bit 0 is on CLOCK, Bit 1 on
+transferred at once until the 4 bytes are done. Bit 0 is on CLOCK, Bit 1 on
 DATA and so on. Electrical 0 means binary 0. Finally CLOCK and DATA are
 released to high level.
 
@@ -220,7 +220,7 @@ also the first one which contains the start address.
 The drive releases DATA to show that it's ready to receive data. Then the C64
 releases CLOCK to synchronize the file transfer.
 
-The following diagram shows the position of each bit being transfered. The bits
+The following diagram shows the position of each bit being transferred. The bits
 are send low-active.
 
 C64 write (PAL)

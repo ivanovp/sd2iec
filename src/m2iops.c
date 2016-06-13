@@ -52,7 +52,7 @@
 /**
  * name_repad - changes CBM name padding in ops_scratch
  * @oldchar: char to be substituted
- * @newchar: char to be substituded with
+ * @newchar: char to be substituted with
  *
  * This function changes the padding of the CBM name in ops_scratch from oldchar
  * to newchar. Please note that strnsubst is not a straigt replacement for

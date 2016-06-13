@@ -1124,7 +1124,7 @@ void fat_mkdir(path_t *path, uint8_t *dirname) {
  * @label: pointer to the buffer for the label (16 characters+zero-termination)
  *
  * This function reads the FAT volume label and stores it zero-terminated
- * in label. Returns 0 if successfull, != 0 if an error occured.
+ * in label. Returns 0 if successful, != 0 if an error occured.
  */
 static uint8_t fat_getvolumename(uint8_t part, uint8_t *label) {
   DIR dh;
@@ -1169,7 +1169,7 @@ static uint8_t fat_getvolumename(uint8_t part, uint8_t *label) {
  * This function reads the FAT volume label (if in root directory) or FAT
  * directory name (if not) and stored it space-padded
  * in the first 16 bytes of label.
- * Returns 0 if successfull, != 0 if an error occured.
+ * Returns 0 if successful, != 0 if an error occured.
  */
 uint8_t fat_getdirlabel(path_t *path, uint8_t *label) {
   DIR dh;

@@ -241,7 +241,7 @@ DWORD get_cluster (     /* 0,>=2: successful, 1: failed */
     }
   }
 
-  return 1; /* Out of cluster range, or an error occured */
+  return 1; /* Out of cluster range, or an error occurred */
 }
 
 
@@ -366,7 +366,7 @@ DWORD create_chain (    /* 0: No free cluster, 1: Error, >=2: New cluster number
     }
     cstat = get_cluster(fs, ncl);         /* Get the cluster status */
     if (cstat == 0) break;                /* Found a free cluster */
-    if (cstat == 1) return 1;             /* Any error occured */
+    if (cstat == 1) return 1;             /* Any error occurred */
     if (ncl == scl) return 0;             /* No free custer */
   }
 
@@ -749,7 +749,7 @@ FRESULT trace_path (     /* FR_OK(0): successful, !=0: error code */
 
 #if !_FS_READONLY
 static
-FRESULT reserve_direntry (  /* FR_OK: successful, FR_DENIED: no free entry, FR_RW_ERROR: a disk error occured */
+FRESULT reserve_direntry (  /* FR_OK: successful, FR_DENIED: no free entry, FR_RW_ERROR: a disk error occurred */
   DIR *dj,                  /* Target directory to create new entry */
   BYTE **dir                /* Pointer to pointer to created entry to retutn */
 #if _USE_LFN != 0
@@ -1044,7 +1044,7 @@ FRESULT mount_drv(
 /*-----------------------------------------------------------------------*/
 
 static
-FRESULT auto_mount (    /* FR_OK(0): successful, !=0: any error occured */
+FRESULT auto_mount (    /* FR_OK(0): successful, !=0: any error occurred */
   const UCHAR **path,   /* Pointer to pointer to the path name (drive number) */
   FATFS **rfs,          /* Pointer to pointer to the found file system object */
   BYTE chk_wp           /* !=0: Check media write protection for write access */

@@ -196,7 +196,7 @@ static int16_t _iec_getc(void) {
  *
  * This function wraps iec_getc to disable interrupts there and is completely
  * inlined by the compiler. It could be inlined in the C code too, but is kept
- * seperately for clarity.
+ * separately for clarity.
  */
 static int16_t iec_getc(void) {
   int16_t val;

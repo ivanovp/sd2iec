@@ -50,7 +50,7 @@ uint8_t int2bcd(uint8_t value) {
   return (value % 10) + 16*(value/10);
 }
 
-/* Similiar to strtok_r, but only a single delimiting character  */
+/* Similar to strtok_r, but only a single delimiting character  */
 uint8_t *ustr1tok(uint8_t *str, const uint8_t delim, uint8_t **saveptr) {
   uint8_t *tmp;
 

@@ -4,7 +4,7 @@ Quick notes on using sd2iec with an mbed LPC1768:
   don't complain if you need to rewire your device
 - an XPresso LPC1768 should also work, but I haven't tested that
 - UART 0 is the debug serial port (USB-connected on mbed)
-- an external 24C02 or similiar EEPROM is required for the
+- an external 24C02 or similar EEPROM is required for the
   configuration settings - steal one from an old DIMM ;)
 - an external 3.3V regulator may or may not be required
   (I'm using one, but VOUT of the mbed may be sufficient)

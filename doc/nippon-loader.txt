@@ -88,7 +88,7 @@ Write byte
 Read T/S
 --------
 1. Sector T/S is fetched into buffer
-2. Byte after byte is tranfered starting with byte 0 to byte $ff. A full sector is transfered.
+2. Byte after byte is tranfered starting with byte 0 to byte $ff. A full sector is transferred.
 
 Write T/S
 --------
@@ -257,7 +257,7 @@ Disassembled floppy code
 03B2    20  BA  03   JSR $03BA       
 ; decrement byte counter
 03B5    CA           DEX 
-; do it till 8 bytes are transfered
+; do it till 8 bytes are transferred
 03B6    D0  E9       BNE $03A1
 ; branch always
 03B8    F0  CC       BEQ $0386       

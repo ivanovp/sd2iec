@@ -24,7 +24,7 @@ with the secondary field set to 0. This difference is used when updating
 the device LEDs - the number of allocated user buffers is tracked in
 active_buffers and the BUSY LED will be turned on by alloc_buffer
 and off by free_buffer as long as at least one user buffer is allocated.
-Similiar to that the DIRTY LED is controlled by mark_write_buffer and
+Similar to that the DIRTY LED is controlled by mark_write_buffer and
 free_buffer - please do not call mark_write_buffer on a system buffer.
 
 free_multiple_buffers takes a flag parameter which specifies which buffer(s)
